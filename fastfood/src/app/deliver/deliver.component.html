@@ -1,0 +1,26 @@
+
+<h1 class="mb-5 text-center">Restaurant FastFood</h1>
+<div>
+    <p class="h5">Pedidos ingresados:</p>
+
+    @for (item of pedidosService.getPedidos(); track $index) {
+    
+       {{  { number : item.number, name : item.name, description : item.description } | json   }}
+    }
+    
+    <p class="h5 mt-5">Pedidos listos para entregar:</p>
+    <ul>
+        @for (item of pedidosListos; track $index) {
+    
+           <li>
+            {{item.number}} -
+            {{item.name}}
+           <button (click)="EntregarPedido($index)">Entregar</button>
+           </li> 
+        }
+    </ul>
+
+</div>
+
+
+

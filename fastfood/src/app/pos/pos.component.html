@@ -1,0 +1,31 @@
+<hr>
+<div class="container">
+
+    <p class="h3 text-center">Point of sells</p>
+
+    <form #formulario="ngForm" (ngSubmit)="onSubmitFormulario(formulario)" >
+        <div class="mb-3">
+          <label for="nameInput" class="form-label">Nombre:</label>
+          <input type="text" class="form-control" name="nombre" ngModel [(ngModel)]="pedido.name" #nombreField="ngModel" required="true"
+            [ngClass]="{'is-invalid': nombreField.invalid && (nombreField.touched) , 'is-valid': nombreField.valid}">
+        </div>
+
+        @if(nombreField.invalid && (nombreField.touched || nombreField.dirty)){
+          <!-- <div class="alert alert-danger">
+                El nombre es obligatorio
+            </div>-->
+         <div class="text-danger">El nombre es obligatorio</div>
+        }
+    
+        <!--fin de validación del primer campo-->
+        <div class="mb-3">
+          <label for="pedidoInput" class="form-label">Pedido:</label>
+          <input type="text" class="form-control" id="pedido" name="pedido" ngModel [(ngModel)]="pedido.description"
+          required="true">
+        </div>
+    
+        <button type="submit" class="btn btn-primary" [disabled]="!formulario.valid">Ordenar</button>
+      </form>
+
+</div>
+<hr>

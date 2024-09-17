@@ -1,0 +1,35 @@
+<div class="conatiner mt-5 ">
+
+    <p class="h3 text-center">Kitchen</p>
+
+    <p class="m-3 h5">Pendiente cocinar</p>
+
+    <div>
+        <ul>
+            @for (pendiente of  pedidosPedientes; track $index) {
+                <li> ({{pendiente.number}}) - {{pendiente.description}}  
+                    @if(PedidosEnCoccion != null){
+                        <button class="btn btn-dark text-white"(click)="agregarPedidoEnCoccion(pendiente.number)" [disabled]="true">Cocinar</button>
+                    }@else {
+                        <button class="btn btn-dark text-white"(click)="agregarPedidoEnCoccion(pendiente.number)">Cocinar</button>
+                    }
+                </li>     
+        }
+        </ul>
+    </div>
+      
+    <p class="m-3 h5">Pendiente en coccion</p>
+
+    <div>
+        <ul>
+            @if(PedidosEnCoccion != null){
+                <li> ({{PedidosEnCoccion.number}}) - {{PedidosEnCoccion.description}}</li>
+            }
+        </ul>
+    </div>
+ 
+    <div >
+        <button class="btn btn-primary" (click)="agregarAPedidoListo()"> Pedido terminado</button>
+    </div>
+    
+</div>
